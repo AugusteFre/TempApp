@@ -20,6 +20,22 @@ const state = {
           temperature: 29.66,
           humidite: 95.67,
           capteur_id: 1
+        },
+        {
+          id: 137,
+          date: '2017-12-16',
+          sequence: 5094,
+          temperature: 8.17,
+          humidite: 3.62,
+          capteur_id: 1
+        },
+        {
+          id: 179,
+          date: '2016-05-09',
+          sequence: 7205,
+          temperature: -6.76,
+          humidite: 52.89,
+          capteur_id: 1
         }
       ]
     }
@@ -57,7 +73,7 @@ const actions = {
         commit('setCapteurs', response.data.results)
       })
       .catch(function (error) {
-        commit('setCapteurs', [])
+        // commit('setCapteurs', [])
         console.log(error.response)
       })
   }

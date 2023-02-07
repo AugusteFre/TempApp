@@ -45,7 +45,6 @@
         <q-list>
           <q-item-label
             header
-            className="text-grey-8"
           >
             Menu de navigation
           </q-item-label>
