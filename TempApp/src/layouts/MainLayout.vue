@@ -24,15 +24,26 @@
           class="absolute-right"
         />
 
-        <q-btn
+        <q-btn-dropdown
           v-else
-          @click="deconnecterUtilisateur"
           flat
           icon-right="account_circle"
-          label="Se déconnecter"
           class="absolute-right"
-        />
+        >
+          <q-list>
+            <q-item clickable v-close-popup>
+              <q-item-section>
+                <q-item-label>Paramètres</q-item-label>
+              </q-item-section>
+            </q-item>
 
+            <q-item clickable v-close-popup @click="deconnecterUtilisateur">
+              <q-item-section>
+                <q-item-label>Se déconnecter</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
       </q-toolbar>
     </q-header>
 
@@ -52,7 +63,6 @@
             <q-item-section avatar>
               <q-icon name="home"/>
             </q-item-section>
-
             <q-item-section>
               <q-item-label>Accueil</q-item-label>
             </q-item-section>
@@ -62,9 +72,20 @@
             <q-item-section avatar>
               <q-icon name="thermostat"/>
             </q-item-section>
-
             <q-item-section>
               <q-item-label>Liste des capteurs</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item v-if="user" clickable to="/fav" exact>
+            <q-item-section avatar>
+              <q-icon name="east"/>
+            </q-item-section>
+            <q-item-section avatar>
+              <q-icon name="grade"/>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>Favoris</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

@@ -1,7 +1,7 @@
 <template>
-    <q-item clickable v-ripple>
+    <q-item clickable v-ripple @click="afficherListeTemp = !afficherListeTemp">
       <q-item-section avatar>
-        <q-icon name="barchart" />
+        <q-icon name="bar_chart" />
     </q-item-section>
 
     <q-item-section>
@@ -19,7 +19,13 @@
       </q-item-label>
     </q-item-section>
 
+      <q-item-section avatar>
+        <q-icon v-if="afficherListeTemp" name="expand_more" />
+        <q-icon v-else name="expand_less" />
+      </q-item-section>
     </q-item>
+
+  <div v-if="afficherListeTemp">
     <q-item v-for="mesure in capteur.mesures" :key="mesure.id" class="q-my-sm" clickable v-ripple>
       <q-item-section avatar>
         <q-icon name="thermostat" />
@@ -36,6 +42,7 @@
         </q-item-label>
       </q-item-section>
     </q-item>
+  </div>
 </template>
 
 <script>
@@ -43,6 +50,11 @@
 export default {
   // eslint-disable-next-line
   name: 'Capteur',
+  data () {
+    return {
+      afficherListeTemp: false
+    }
+  },
   props: {
     capteur: {
       type: Object,

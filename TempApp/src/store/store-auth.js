@@ -13,10 +13,10 @@ Mutations : méthode qui manipulent les données
 Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
-  setUser (state, user) {
+  SET_USER (state, user) {
     state.user = user
   },
-  setToken (state, token) {
+  SET_TOKEN (state, token) {
     state.token = token
   }
 }
@@ -60,17 +60,19 @@ const actions = {
   },
   setUser ({ commit, dispatch, state }, data) {
     // Sauvegarde, commite, les données dans le magasin
-    commit('setUser', data.user)
-    commit('setToken', data.access_token)
+    commit('SET_USER', data.user)
+    commit('SET_TOKEN', data.access_token)
     // Sauvegarde les données de l'utilisateur dans le localStorage
     LocalStorage.set('user', state.user)
     LocalStorage.set('token', state.token)
+    // Récupération des capteurs de l'utilisateur
+    dispatch('capteurs/getCapteursApi', null, { root: true })
     // Redirige l'utilisateur vers la page des tâches
     this.$router.push('/')
     // Cache la fenêtre de chargement
     Loading.hide()
   },
-  deconnecterUtilisateur ({ commit, state }) {
+  deconnecterUtilisateur ({ commit, state, dispatch }) {
     Loading.show()
     const that = this
     // Configuration du header avec token
@@ -87,10 +89,12 @@ const actions = {
       })
       .finally(function () {
         // Réinitialise user et token
-        commit('setUser', null)
-        commit('setToken', null)
+        commit('SET_USER', null)
+        commit('SET_TOKEN', null)
         // Vide le locaStorage
         LocalStorage.clear()
+        // Vide la liste des capteurs
+        dispatch('capteurs/viderCapteurs', null, { root: true })
         // Redirige l'utilisateur vers la page de connexion
         that.$router.push('/connexion')
         // location.reload() // recharge la page du navigateur

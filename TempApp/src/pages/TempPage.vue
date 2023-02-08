@@ -20,7 +20,7 @@
 <script>
 
 import Capteur from 'components/Temp/Capteur'
-import { mapActions } from 'vuex'
+// import { mapActions } from 'vuex'
 
 export default {
   name: 'TempPage',
@@ -34,13 +34,13 @@ export default {
   },
   methods: {
     // mappe l'action de récupérer des clients par API
-    ...mapActions('capteurs', ['getCapteursApi'])
+    // ...mapActions('capteurs', ['getCapteursApi'])
   },
 
   // mounted est appelé quand le composant est ajouté
   mounted () {
   // récupère les clients générés par API
-    this.getCapteursApi()
+    // this.getCapteursApi()
   }
 }
 </script>

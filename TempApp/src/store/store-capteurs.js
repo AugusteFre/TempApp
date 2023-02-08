@@ -52,7 +52,7 @@ const mutations = {
    * @param state
    * @param newCapteurs le nouveau tableau de capteurs
    */
-  setCapteurs (state, newCapteurs) {
+  SET_CAPTEURS (state, newCapteurs) {
     state.capteurs = newCapteurs
   }
 }
@@ -64,18 +64,25 @@ const actions = {
   /**
    * Récupère des capteurs grâce à l'API
    * @param commit
+   * @param rootState
    */
-  getCapteursApi ({ commit }) {
-    api.get('/capteurs')
+  getCapteursApi ({ commit, rootState }) {
+    const config = {
+      headers: { Authorization: 'Bearer ' + rootState.auth.token }
+    }
+    api.get('/capteurs', config)
       .then(function (response) {
         console.log(response)
-        // l'API renvoie une réponse qui contient un tableau data, dans ce tableau data, les clients sont dans le tableau results
-        commit('setCapteurs', response.data.results)
+        // l'API renvoie une réponse qui contient un tableau data
+        commit('SET_CAPTEURS', response.data)
       })
       .catch(function (error) {
-        // commit('setCapteurs', [])
+        commit('SET_CAPTEURS', [])
         console.log(error.response)
       })
+  },
+  viderCapteurs ({ commit }) {
+    commit('SET_CAPTEURS', [])
   }
 }
 
@@ -85,10 +92,10 @@ Fonctionne comme les propriétés calculées
 Sert à calculer, trier, filtrer ou formater les donneés
  */
 const getters = {
+  /**
+   * renvoie un tableau de capteurs
+   */
   getCapteurs (state) {
-    /**
-     * renvoie un tableau de capteurs
-     */
     return state.capteurs
   }
 }
