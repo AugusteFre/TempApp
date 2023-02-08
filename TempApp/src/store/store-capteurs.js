@@ -39,6 +39,12 @@ const state = {
         }
       ]
     }
+  ],
+  salles: [
+    {
+      id: 1,
+      nom: 'C595-119'
+    }
   ]
 }
 
@@ -54,6 +60,9 @@ const mutations = {
    */
   SET_CAPTEURS (state, newCapteurs) {
     state.capteurs = newCapteurs
+  },
+  SET_SALLES (state, newSalles) {
+    state.salles = newSalles
   }
 }
 /*
@@ -83,6 +92,25 @@ const actions = {
   },
   viderCapteurs ({ commit }) {
     commit('SET_CAPTEURS', [])
+  },
+
+  getSallesApi ({ commit, rootState }) {
+    const config = {
+      headers: { Authorization: 'Bearer ' + rootState.auth.token }
+    }
+    api.get('/salles', config)
+      .then(function (response) {
+        console.log(response)
+        // l'API renvoie une réponse qui contient un tableau data
+        commit('SET_SALLES', response.data)
+      })
+      .catch(function (error) {
+        commit('SET_SALLES', [])
+        console.log(error.response)
+      })
+  },
+  viderSalles ({ commit }) {
+    commit('SET_SALLES', [])
   }
 }
 
@@ -97,6 +125,9 @@ const getters = {
    */
   getCapteurs (state) {
     return state.capteurs
+  },
+  getSalles (state) {
+    return state.salles
   }
 }
 

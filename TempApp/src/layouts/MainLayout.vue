@@ -88,6 +88,15 @@
               <q-item-label>Favoris</q-item-label>
             </q-item-section>
           </q-item>
+
+          <q-item clickable to="/salles" exact>
+            <q-item-section avatar>
+              <q-icon name="room"/>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>Liste des salles</q-item-label>
+            </q-item-section>
+          </q-item>
         </q-list>
       </q-list>
     </q-drawer>

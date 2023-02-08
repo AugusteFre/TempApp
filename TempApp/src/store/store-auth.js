@@ -67,6 +67,7 @@ const actions = {
     LocalStorage.set('token', state.token)
     // Récupération des capteurs de l'utilisateur
     dispatch('capteurs/getCapteursApi', null, { root: true })
+    dispatch('capteurs/getSallesApi', null, { root: true })
     // Redirige l'utilisateur vers la page des tâches
     this.$router.push('/')
     // Cache la fenêtre de chargement
@@ -95,6 +96,7 @@ const actions = {
         LocalStorage.clear()
         // Vide la liste des capteurs
         dispatch('capteurs/viderCapteurs', null, { root: true })
+        dispatch('capteurs/viderSalles', null, { root: true })
         // Redirige l'utilisateur vers la page de connexion
         that.$router.push('/connexion')
         // location.reload() // recharge la page du navigateur
