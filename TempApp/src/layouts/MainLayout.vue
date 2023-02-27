@@ -31,7 +31,7 @@
           class="absolute-right"
         >
           <q-list>
-            <q-item clickable v-close-popup>
+            <q-item clickable to="/parametres" exact>
               <q-item-section>
                 <q-item-label>Paramètres</q-item-label>
               </q-item-section>
@@ -78,9 +78,6 @@
           </q-item>
 
           <q-item v-if="user" clickable to="/fav" exact>
-            <q-item-section avatar>
-              <q-icon name="east"/>
-            </q-item-section>
             <q-item-section avatar>
               <q-icon name="grade"/>
             </q-item-section>

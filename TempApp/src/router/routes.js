@@ -7,6 +7,8 @@ const routes = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: '/temp', component: () => import('pages/TempPage.vue') },
       { path: '/salles', component: () => import('pages/SallesPage.vue') },
+      { path: '/parametres', component: () => import('pages/ParametresPage.vue') },
+      { path: '/fav', component: () => import('pages/FavorisPage.vue') },
       { path: 'connexion', component: () => import('pages/PageConnexion.vue') }
     ]
   },
