@@ -13,7 +13,6 @@
       </capteur>
     </q-list>
     <p v-else>Aucun capteur trouvé ...</p>
-
   </q-page>
 </template>
 

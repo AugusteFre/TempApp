@@ -2,7 +2,7 @@
     <q-item clickable v-ripple @click="afficherListeTemp = !afficherListeTemp">
       <q-item-section avatar>
         <q-icon name="bar_chart" />
-    </q-item-section>
+      </q-item-section>
 
     <q-item-section>
       <q-item-label lines="1">

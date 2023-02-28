@@ -45,6 +45,20 @@ const state = {
       id: 1,
       nom: 'C595-119'
     }
+  ],
+  user: [
+    {
+      id: 3,
+      nom: 'Admin',
+      prenom: 'Admin',
+      photo: null,
+      email: 'admin@tempapi.divtec.me',
+      password: '$2y$10$Rhv9J7UKDXvovewXwN1mF.gwMbS3fWfl0HHcaT.DF/SIvTvWvltw6',
+      is_admin: 1,
+      remember_token: null,
+      created_at: '2022-11-30T08:59:53.000000Z',
+      updated_at: '2022-11-30T08:59:53.000000Z'
+    }
   ]
 }
 
