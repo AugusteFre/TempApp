@@ -1,35 +1,34 @@
 <template>
+  <q-card
+    class="card">
+    <q-img
+      :src="user.photo ? user.photo : 'images/image-placeholder.png'"
+      basic
+    >
+      <div class="absolute-bottom text-h6">
+        {{ user.nom }} {{ user.prenom }}
+      </div>
+    </q-img>
 
-  <q-item>
-    <q-item-section>
-      <q-item-label lines="1">
-        {{ user.photo }}
-      </q-item-label>
+    <q-card-section>
+      <span> Email : {{ user.email }} </span>
+    </q-card-section>
 
-      <q-item-label lines="1">
-        Nom : {{ user.nom }}
-      </q-item-label>
+    <q-card-section>
+      <span> Créé le : {{ user.created_at }} </span>
+    </q-card-section>
 
-      <q-item-label lines="1">
-        Prénom : {{ user.prenom }}
-      </q-item-label>
-
-      <q-item-label lines="1">
-        Email : {{ user.email }}
-      </q-item-label>
-
-      <q-item-label lines="1">
-        Créé le : {{ user.created_at }}
-      </q-item-label>
-
+    <q-card-actions
+      class="absolute-bottom"
+      align="center">
       <q-btn
         flat
         dense
         icon="lock"
         label="Modifier le mot de passe"
       />
-    </q-item-section>
-  </q-item>
+    </q-card-actions>
+  </q-card>
 </template>
 
 <script>
