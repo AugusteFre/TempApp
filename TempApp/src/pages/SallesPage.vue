@@ -12,7 +12,7 @@
               :salles="salle">
       </salle>
     </q-list>
-    <p v-else>Aucun capteur trouvé ...</p>
+    <p v-else>Aucune salle trouvée ...</p>
 
   </q-page>
 </template>

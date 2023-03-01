@@ -19,6 +19,16 @@
       </q-item-label>
     </q-item-section>
 
+      <q-item-section side>
+        <q-btn
+          @click.stop="etatFavori(favori, capteur)"
+          dense
+          flat
+          round
+          color="negative"
+          icon="star" />
+      </q-item-section>
+
       <q-item-section avatar>
         <q-icon v-if="afficherListeTemp" name="expand_more" />
         <q-icon v-else name="expand_less" />
@@ -52,7 +62,24 @@ export default {
   name: 'Capteur',
   data () {
     return {
-      afficherListeTemp: false
+      afficherListeTemp: false,
+      favori: false
+    }
+  },
+  methods: {
+    etatFavori (favori, capteur) {
+      favori = !favori
+      if (favori) {
+        this.ajouterFavori(capteur)
+      } else {
+        this.supprimerFavori(capteur.id)
+      }
+    },
+    ajouterFavori (capteur) {
+      localStorage.fav.push(capteur)
+    },
+    supprimerFavori (id) {
+      localStorage.fav = localStorage.fav.filter(el => el.id !== id)
     }
   },
   props: {
