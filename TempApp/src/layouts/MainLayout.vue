@@ -54,9 +54,7 @@
     >
       <q-list>
         <q-list>
-          <q-item-label
-            header
-          >
+          <q-item-label header>
             Menu de navigation
           </q-item-label>
           <q-item clickable to="/" exact>
@@ -94,6 +92,42 @@
               <q-item-label>Liste des salles</q-item-label>
             </q-item-section>
           </q-item>
+
+          <div v-if="user">
+          <div v-if="user.is_admin">
+          <q-separator inset />
+            <q-item-label header>
+              Admin
+            </q-item-label>
+
+            <q-item clickable to="/AdminUser" exact>
+              <q-item-section avatar>
+                <q-icon name="manage_accounts"/>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Gérer utilisateur</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable to="/AdminCapteur" exact>
+              <q-item-section avatar>
+                <q-icon name="settings"/>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Gérer capteurs</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable to="/AdminSalles" exact>
+              <q-item-section avatar>
+                <q-icon name="room_preferences"/>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Gérer salles</q-item-label>
+              </q-item-section>
+            </q-item>
+          </div>
+          </div>
         </q-list>
       </q-list>
     </q-drawer>

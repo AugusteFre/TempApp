@@ -2,10 +2,18 @@
   <q-form @submit.prevent="submitForm">
     <q-input
       outlined
-      v-model="form.name"
-      label="Nom d'utilisateur"
+      v-model="form.firstName"
+      label="Nom"
       class="q-my-md"
-      :rules="[ val => val.length >= 4 || 'Minimum 4 caractère']"
+      :rules="[ val => val.length >= 2 || 'Minimum 2 caractère']"
+    />
+
+    <q-input
+      outlined
+      v-model="form.lastName"
+      label="Prenom"
+      class="q-my-md"
+      :rules="[ val => val.length >= 2 || 'Minimum 2 caractère']"
     />
 
     <q-input
@@ -51,10 +59,11 @@ export default {
   data () {
     return {
       form: {
-        name: '',
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        is_admin: 0
       }
     }
   },

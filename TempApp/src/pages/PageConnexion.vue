@@ -1,29 +1,17 @@
 <template>
   <q-page padding>
-    <q-card class="connexion">
-      <q-tabs
+    <q-card class="connexion"
         v-model="tab"
-        class="text-grey"
         active-color="primary"
         indicator-color="primary"
         align="justify"
         narrow-indicator
       >
-        <q-tab name="connexion" label="Se connecter" />
-        <q-tab name="enregistrement" label="Créer un compte" />
-      </q-tabs>
 
-      <q-separator />
+      <q-tab-panel name="connexion">
+        <cnx-form/>
+      </q-tab-panel>
 
-      <q-tab-panels v-model="tab" animated>
-        <q-tab-panel name="connexion">
-          <cnx-form/>
-        </q-tab-panel>
-
-        <q-tab-panel name="enregistrement">
-          <reg-form/>
-        </q-tab-panel>
-      </q-tab-panels>
     </q-card>
   </q-page>
 </template>
@@ -37,8 +25,7 @@ export default {
     }
   },
   components: {
-    'cnx-form': require('components/Connexion/ConnexionForm').default,
-    'reg-form': require('components/Connexion/EnregistrementForm').default
+    'cnx-form': require('components/Forms/ConnexionForm').default
   }
 }
 </script>

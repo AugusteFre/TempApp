@@ -15,7 +15,7 @@
       v-model="form.password"
       label="Mot de passe"
       class="q-my-md"
-      :rules="[ val => val.length >= 4 || 'Minimum 4 caractère']"
+      :rules="[ val => val.length >= 2 || 'Minimum 2 caractère']"
       lazy-rules
     />
 

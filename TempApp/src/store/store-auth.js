@@ -28,16 +28,12 @@ Elles peuvent être asynchrones !
 const actions = {
   enregistrerUtilisateur ({ commit, dispatch }, payload) {
     Loading.show()
-    api.post('/register', payload)
-      .then(function (response) {
-        dispatch('setUser', response.data)
-      })
+    api.post('/newuser', payload)
       .catch(function (error) {
         Loading.hide()
         console.log(error.response)
         afficherMessageErreur(
-          'Création du compte impossible !',
-          Object.values(error.response.data)
+          'Création du compte impossible !'
         )
         throw error
       })
@@ -52,7 +48,7 @@ const actions = {
         Loading.hide()
         console.log(error)
         afficherMessageErreur(
-          'Connexion impossible !',
+          'Forms impossible !',
           Object.values(error.response.data)
         )
         throw error

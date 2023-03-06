@@ -3,62 +3,10 @@ import { api } from 'boot/axios'
 // State : données du magasin
 const state = {
   capteurs: [
-    {
-      id: 1,
-      nom: 'capteur-5574',
-      logo: null,
-      code: 'nd_6430',
-      salle: {
-        id: 1,
-        nom: 'C595-119'
-      },
-      mesures: [
-        {
-          id: 177,
-          date: '2021-02-23',
-          sequence: 7606,
-          temperature: 29.66,
-          humidite: 95.67,
-          capteur_id: 1
-        },
-        {
-          id: 137,
-          date: '2017-12-16',
-          sequence: 5094,
-          temperature: 8.17,
-          humidite: 3.62,
-          capteur_id: 1
-        },
-        {
-          id: 179,
-          date: '2016-05-09',
-          sequence: 7205,
-          temperature: -6.76,
-          humidite: 52.89,
-          capteur_id: 1
-        }
-      ]
-    }
   ],
   salles: [
-    {
-      id: 1,
-      nom: 'C595-119'
-    }
   ],
   user: [
-    {
-      id: 3,
-      nom: 'Admin',
-      prenom: 'Admin',
-      photo: null,
-      email: 'admin@tempapi.divtec.me',
-      password: '$2y$10$Rhv9J7UKDXvovewXwN1mF.gwMbS3fWfl0HHcaT.DF/SIvTvWvltw6',
-      is_admin: 1,
-      remember_token: null,
-      created_at: '2022-11-30T08:59:53.000000Z',
-      updated_at: '2022-11-30T08:59:53.000000Z'
-    }
   ]
 }
 

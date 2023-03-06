@@ -9,6 +9,9 @@ const routes = [
       { path: '/salles', component: () => import('pages/SallesPage.vue') },
       { path: '/parametres', component: () => import('pages/ParametresPage.vue') },
       { path: '/fav', component: () => import('pages/FavorisPage.vue') },
+      { path: '/adminUser', component: () => import('pages/AdminUser.vue') },
+      { path: '/adminCapteur', component: () => import('pages/AdminCapteur.vue') },
+      { path: '/adminSalles', component: () => import('pages/AdminSalles.vue') },
       { path: 'connexion', component: () => import('pages/PageConnexion.vue') }
     ]
   },
