@@ -3,6 +3,7 @@ import { createStore } from 'vuex'
 
 import auth from './store-auth'
 import capteurs from './store-capteurs'
+import favoris from './store-favoris'
 
 // import example from './module-example'
 
@@ -19,7 +20,8 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
       auth,
-      capteurs
+      capteurs,
+      favoris
       // example
     },
 

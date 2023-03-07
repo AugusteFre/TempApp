@@ -2,14 +2,14 @@
   <q-page padding>
     <h3>Liste des capteurs</h3>
     <q-list
-      v-if="capteursFavoris.length"
+      v-if="capteursFavoris.favoris.length"
       class="rounded-borders"
       bordered
       separator
     >
-      <capteur v-for="capteur in capteursFavoris"
-              :key="capteur.id"
-              :capteur="capteur">
+      <capteur v-for="favori in capteursFavoris.favoris"
+              :key="favori.id"
+              :capteur="favori">
       </capteur>
     </q-list>
     <p v-else>Aucun capteur mis en favori ...</p>
@@ -29,8 +29,9 @@ export default {
   computed: {
     // récupère les clients par défaut
     capteursFavoris () {
-      if (localStorage.getItem('fav')) {
-        return (localStorage.getItem('fav'))
+      if (this.$q.localStorage.getItem('favoris')) {
+        console.log(this.$q.localStorage.getItem('favoris'))
+        return (this.$q.localStorage.getItem('favoris'))
       }
       return 0
     }

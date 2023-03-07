@@ -57,6 +57,8 @@
 
 <script>
 
+import { mapActions } from 'vuex/dist/vuex.mjs'
+
 export default {
   // eslint-disable-next-line
   name: 'Capteur',
@@ -67,20 +69,14 @@ export default {
     }
   },
   methods: {
+    ...mapActions('favoris', ['ajouterFavori', 'supprimerFavori']),
     etatFavori (favori, capteur) {
       favori = !favori
       if (favori) {
         this.ajouterFavori(capteur)
       } else {
-        this.supprimerFavori(capteur.id)
+        this.supprimerFavori(capteur)
       }
-      console.log(localStorage.fav)
-    },
-    ajouterFavori (capteur) {
-      localStorage.setItem('fav', capteur)
-    },
-    supprimerFavori (id) {
-      localStorage.fav = localStorage.fav.filter(el => el.id !== id)
     }
   },
   props: {
