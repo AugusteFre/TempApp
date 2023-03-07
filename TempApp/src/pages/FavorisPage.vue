@@ -29,7 +29,10 @@ export default {
   computed: {
     // récupère les clients par défaut
     capteursFavoris () {
-      return localStorage.fav
+      if (localStorage.getItem('fav')) {
+        return (localStorage.getItem('fav'))
+      }
+      return 0
     }
   },
   methods: {
@@ -39,8 +42,7 @@ export default {
 
   // mounted est appelé quand le composant est ajouté
   mounted () {
-  // récupère les clients générés par API
-    // this.getCapteursApi()
+    // aled
   }
 }
 </script>

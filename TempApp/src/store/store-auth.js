@@ -26,9 +26,17 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
-  enregistrerUtilisateur ({ commit, dispatch }, payload) {
+  enregistrerUtilisateur ({ commit, dispatch, rootState }, payload) {
+    const config = {
+      headers: { Authorization: 'Bearer ' + rootState.auth.token }
+    }
     Loading.show()
-    api.post('/newuser', payload)
+    console.log(payload)
+    api.post('/newuser', payload, config)
+      .then(function (response) {
+        Loading.hide()
+        console.log(response.data)
+      })
       .catch(function (error) {
         Loading.hide()
         console.log(error.response)

@@ -2,52 +2,35 @@
   <q-form @submit.prevent="submitForm">
     <q-input
       outlined
-      v-model="form.firstName"
+      v-model="form.name"
       label="Nom"
       class="q-my-md"
-      :rules="[ val => val.length >= 2 || 'Minimum 2 caractère']"
+      :rules="[ val => val.length >= 1 || 'Minimum 1 caractère']"
     />
 
     <q-input
       outlined
-      v-model="form.lastName"
-      label="Prenom"
+      v-model="form.code"
+      label="Code"
       class="q-my-md"
-      :rules="[ val => val.length >= 2 || 'Minimum 2 caractère']"
+      :rules="[ val => val.length >= 1 || 'Minimum 1 caractère']"
     />
 
     <q-input
       outlined
-      v-model="form.email"
-      label="E-mail"
+      v-model="form.logo"
+      label="logo"
       class="q-my-md"
-      :rules="[val => validateEmail(val) || 'Email invalide']"
-    />
-
-    <q-input
-      type="password"
-      outlined
-      v-model="form.password"
-      label="Mot de passe"
-      class="q-my-md"
-      :rules="[ val => val.length >= 4 || 'Minimum 4 caractère']"
+      :rules="[ val => val.length >= 1 || 'Minimum 1 caractère']"
       lazy-rules
     />
 
-    <q-input
-      type="password"
-      outlined
-      v-model="form.password_confirmation"
-      label="Confirmer le mot de passe"
-      class="q-my-md"
-      :rules="[ val => val === form.password || 'Les mots de passe sont différents']"
-      lazy-rules
-    />
+      <!-- TODO liste énumérée des salles dispo -->
 
     <q-btn
       type="submit"
       color="primary"
-      label="Créer un compte"
+      label="Ajouter le capteur"
     />
   </q-form>
 </template>
@@ -59,11 +42,10 @@ export default {
   data () {
     return {
       form: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        is_admin: 0
+        nom: '',
+        logo: '',
+        code: '',
+        salle_id: ''
       }
     }
   },

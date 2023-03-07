@@ -1,48 +1,53 @@
 <template>
   <q-form @submit.prevent="submitForm">
     <q-input
+      type="number"
       outlined
-      v-model="form.firstName"
-      label="Nom"
+      v-model="form.date"
+      label="Date"
       class="q-my-md"
-      :rules="[ val => val.length >= 2 || 'Minimum 2 caractère']"
+      :rules="[ val => val.length >= 1 || 'Minimum 1 caractère']"
     />
 
     <q-input
+      type="number"
       outlined
-      v-model="form.lastName"
-      label="Prenom"
+      v-model="form.sequence"
+      label="Sequence"
       class="q-my-md"
-      :rules="[ val => val.length >= 2 || 'Minimum 2 caractère']"
+      :rules="[ val => val.length >= 1 || 'Minimum 1 caractère']"
+    />
+
+
+    <q-input
+      type="number"
+      outlined
+      v-model="form.temperature"
+      label="Temperature"
+      class="q-my-md"
+      :rules="[ val => val.length >= 1 || 'Minimum 1 caractère']"
     />
 
     <q-input
+      type="number"
       outlined
-      v-model="form.email"
-      label="E-mail"
+      v-model="form.humidite"
+      label="Humidité"
       class="q-my-md"
-      :rules="[val => validateEmail(val) || 'Email invalide']"
+      :rules="[ val => val.length >= 1 || 'Minimum 1 caractère']"
     />
 
-    <q-input
-      type="password"
-      outlined
-      v-model="form.password"
-      label="Mot de passe"
-      class="q-my-md"
-      :rules="[ val => val.length >= 4 || 'Minimum 4 caractère']"
-      lazy-rules
-    />
+      <!-- TODO liste énumérée des capteurs dispo -->
 
-    <q-input
-      type="password"
-      outlined
-      v-model="form.password_confirmation"
-      label="Confirmer le mot de passe"
-      class="q-my-md"
-      :rules="[ val => val === form.password || 'Les mots de passe sont différents']"
-      lazy-rules
-    />
+      <q-input
+        type="password"
+        outlined
+        v-model="form.password"
+        label="Mot de passe"
+        class="q-my-md"
+        :rules="[ val => val.length >= 4 || 'Minimum 4 caractère']"
+        lazy-rules
+      />
 
     <q-btn
       type="submit"
@@ -59,11 +64,12 @@ export default {
   data () {
     return {
       form: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        is_admin: 0
+        date: '',
+        sequence: '',
+        temperature: '',
+        humidite: '',
+        capteur_id: '',
+        password: ''
       }
     }
   },

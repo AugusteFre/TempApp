@@ -74,9 +74,10 @@ export default {
       } else {
         this.supprimerFavori(capteur.id)
       }
+      console.log(localStorage.fav)
     },
     ajouterFavori (capteur) {
-      localStorage.fav.push(capteur)
+      localStorage.setItem('fav', capteur)
     },
     supprimerFavori (id) {
       localStorage.fav = localStorage.fav.filter(el => el.id !== id)
