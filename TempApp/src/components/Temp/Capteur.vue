@@ -20,13 +20,20 @@
     </q-item-section>
 
       <q-item-section side>
-        <q-btn
-          @click.stop="etatFavori(favori, capteur)"
-          dense
-          flat
-          round
-          color="negative"
-          icon="star" />
+        <q-btn v-if="favori"
+               @click.stop="etatFavori(capteur)"
+               dense
+               flat
+               round
+               color="primary"
+               icon="star" />
+        <q-btn v-else
+               @click.stop="etatFavori(capteur)"
+               dense
+               flat
+               round
+               color="primary"
+               icon="star_border" />
       </q-item-section>
 
       <q-item-section avatar>
@@ -47,9 +54,7 @@
       </q-item-section>
 
       <q-item-section side>
-        <q-item-label>
-          Id: {{ mesure.id }} | Seq: {{ mesure.sequence }}
-        </q-item-label>
+        <q-item-label> Id: {{ mesure.id }} | Seq: {{ mesure.sequence }} </q-item-label>
       </q-item-section>
     </q-item>
   </div>
@@ -58,10 +63,16 @@
 <script>
 
 import { mapActions } from 'vuex/dist/vuex.mjs'
+import { ref } from 'vue'
 
 export default {
   // eslint-disable-next-line
   name: 'Capteur',
+  setup () {
+    return {
+      value: ref(false)
+    }
+  },
   data () {
     return {
       afficherListeTemp: false,
@@ -70,9 +81,9 @@ export default {
   },
   methods: {
     ...mapActions('favoris', ['ajouterFavori', 'supprimerFavori']),
-    etatFavori (favori, capteur) {
-      favori = !favori
-      if (favori) {
+    etatFavori (capteur) {
+      this.favori = !this.favori
+      if (this.favori) {
         this.ajouterFavori(capteur)
       } else {
         this.supprimerFavori(capteur)
