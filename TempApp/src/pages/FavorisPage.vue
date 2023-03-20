@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <h3>Liste des capteurs</h3>
+    <h3>Liste des favoris</h3>
     <q-list
       v-if="capteursFavoris.favoris"
       class="rounded-borders"
@@ -29,7 +29,6 @@ export default {
   computed: {
     // récupère les clients par défaut
     capteursFavoris () {
-      console.log(this.$q.localStorage.getItem('favoris'))
       if (this.$q.localStorage.getItem('favoris')) {
         return (this.$q.localStorage.getItem('favoris'))
       }

@@ -16,13 +16,19 @@ Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
   /**
-   * Remplace le tableau défaut par un nouveau tableau
-   * @param state
+   * Définit les nouveaux capteurs
+   * @param state le tableau a modifier
    * @param newCapteurs le nouveau tableau de capteurs
    */
   SET_CAPTEURS (state, newCapteurs) {
     state.capteurs = newCapteurs
   },
+  /**
+   * Définit les nouvelles salles
+   * @param state le tableau a modifier
+   * @param newSalles le nouveau tableau de salles
+   * @constructor
+   */
   SET_SALLES (state, newSalles) {
     state.salles = newSalles
   }
@@ -33,9 +39,9 @@ Elles peuvent être asynchrones !
  */
 const actions = {
   /**
-   * Récupère des capteurs grâce à l'API
-   * @param commit
-   * @param rootState
+   * Récupère la liste des capteurs par l'API
+   * @param commit permet de lancer les mutations
+   * @param rootState données d'authentification d'utilisateur
    */
   getCapteursApi ({ commit, rootState }) {
     const config = {
@@ -52,10 +58,20 @@ const actions = {
         console.log(error.response)
       })
   },
+
+  /**
+   * Vide la liste des capteurs
+   * @param commit permet de lancer les mutations
+   */
   viderCapteurs ({ commit }) {
     commit('SET_CAPTEURS', [])
   },
 
+  /**
+   * Récupère la liste des salles par Api
+   * @param commit permet de lancer les mutations
+   * @param rootState données d'authentification d'utilisateur
+   */
   getSallesApi ({ commit, rootState }) {
     const config = {
       headers: { Authorization: 'Bearer ' + rootState.auth.token }
@@ -71,6 +87,10 @@ const actions = {
         console.log(error.response)
       })
   },
+  /**
+   * Vide la liste des salles
+   * @param commit permet de lancer les mutations
+   */
   viderSalles ({ commit }) {
     commit('SET_SALLES', [])
   }
@@ -83,11 +103,18 @@ Sert à calculer, trier, filtrer ou formater les donneés
  */
 const getters = {
   /**
-   * renvoie un tableau de capteurs
+   * Retourne les capteurs
+   * @param state Les capteurs
+   * @returns {[]|*} un tableau contenant les capteurs
    */
   getCapteurs (state) {
     return state.capteurs
   },
+  /**
+   * Retourne les salles
+   * @param state Les salles
+   * @returns {[]|*} un tableau contenant les salles
+   */
   getSalles (state) {
     return state.salles
   }

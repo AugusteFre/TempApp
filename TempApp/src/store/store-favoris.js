@@ -10,11 +10,23 @@ Mutations : méthode qui manipulent les données
 Les mutations ne peuvent pas être asynchrones !!!
  */
 const mutations = {
+  /**
+   * Ajoute en favori un élément
+   * @param state les favoris
+   * @param favori l'élément a ajouter
+   * @constructor
+   */
   ADD_FAVORIS (state, favori) {
     state.favoris.push(favori)
   },
+  /**
+   * Supprime l'élément des favoris
+   * @param state les favoris
+   * @param favori l'élément a supprimer
+   * @constructor
+   */
   REMOVE_FAVORIS (state, favori) {
-    state = state.filter(el => el.id !== favori.id)
+    state = state.favoris.filter(el => el.id !== favori.id)
   }
 }
 
@@ -23,13 +35,21 @@ Actions : méthodes du magasin qui font appel aux mutations
 Elles peuvent être asynchrones !
  */
 const actions = {
+  /**
+   * Ajoute un élément en favori au local storage
+   * @param commit validation de l'action
+   * @param payload ce qui contient les données
+   */
   ajouterFavori ({ commit }, payload) {
-    console.log(payload)
     commit('ADD_FAVORIS', payload)
     LocalStorage.set('favoris', state)
   },
+  /**
+   * Supprime un élément de favori du local storage
+   * @param commit validation de l'action
+   * @param payload ce qui contient les données
+   */
   supprimerFavori ({ commit }, payload) {
-    console.log(payload)
     commit('REMOVE_FAVORIS', payload)
     LocalStorage.set('favoris', state)
   }
